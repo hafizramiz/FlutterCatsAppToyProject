@@ -15,7 +15,7 @@ class TierChart extends StatelessWidget {
     Q.deviceWidth = MediaQuery.of(context).size.width;
     Q.deviceHeight = MediaQuery.of(context).size.height;
     double chartSize = Q.deviceWidth * 0.9;
-    double fontSize = chartSize * 0.04; // Responsive font size
+    double fontSize = chartSize * 0.04;
 
     return Center(
       child: CustomPaint(
