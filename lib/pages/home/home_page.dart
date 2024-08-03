@@ -35,9 +35,9 @@ class HomePage extends StatelessWidget {
                     CatsView(),
                     TiersView(),
                    SizedBox(
-                     width: 200,
+                     width: AppSize.dividerSizedBoxWidth,
                      child: Divider(
-                       thickness: 2.0,
+                       thickness: AppSize.dividerThickness,
                        color: Colors.black,
                      ),
                    )
