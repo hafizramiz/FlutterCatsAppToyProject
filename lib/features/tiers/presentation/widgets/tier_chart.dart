@@ -1,14 +1,14 @@
 import 'package:cat_app_toy_project/features/tiers/presentation/widgets/tier_chart_painter.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/config/q.dart';
+import '../../../../shared/data/models/result_model.dart';
 import '../../domain/entities/tier.dart';
 
 class TierChart extends StatelessWidget {
-  final List<Tier> tiers;
-  final String indicatorLabel;
+  final ResultModel resultModel;
 
   TierChart(
-      {required this.tiers, required this.indicatorLabel});
+      {required this.resultModel});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,10 @@ class TierChart extends StatelessWidget {
       child: CustomPaint(
         size: Size(chartSize, chartSize),
         painter: TierChartPainter(
-          indicatorLabel:indicatorLabel,
-          indicatorValue:15000,
+          indicatorLabel:resultModel.currentTier?.toUpperCase() ?? "",
+          indicatorValue:resultModel.tierPoints?.toDouble() ?? 0.0,
           fontSize: fontSize,
-          tiers: tiers,
+          tiers: resultModel.tiers??[],
         ),
       ),
     );

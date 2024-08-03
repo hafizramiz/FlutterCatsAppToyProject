@@ -19,8 +19,7 @@ final class TiersView extends StatelessWidget {
         if (state is TiersSuccess) {
           return Expanded(
               child: TierChart(
-            tiers: state.resultModel.tiers?.toList() ?? [],
-            indicatorLabel: state.resultModel.currentTier?.toUpperCase() ?? "",
+            resultModel: state.resultModel
           ));
         }
         if (state is TiersFailure) {
