@@ -257,20 +257,18 @@ final class TierChartPainter extends CustomPainter {
 
       /// Draw a card for the first set of texts (if needed)
       if (i == 0) {
-        // We consider the first two lines as one block
         final cardWidth =
             max(textPainters[0].width, textPainters[1].width) + 20;
         final cardHeight =
             (textPainters[0].height + textPainters[1].height) + 16;
 
         /// Adjust the card's Y position to lift it further upward
-        final cardYOffset = 20; // Amount to lift the card upward
+        final cardYOffset = 20;
 
         final cardRect = RRect.fromRectAndRadius(
           Rect.fromLTWH(
             centerX - cardWidth / 2,
             y - textPainters[0].height / 2 - cardYOffset,
-            // Lift the card further
             cardWidth,
             cardHeight,
           ),
