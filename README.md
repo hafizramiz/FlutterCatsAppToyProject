@@ -23,5 +23,5 @@ Cats feature uses only cats data. But Tiers feature not only uses  tiers, additi
 tierPoints.
 Shared is responsible for features that are shared between the two features.
 
-
-![Screenshot_20240803_210318](https://github.com/user-attachments/assets/7564a7b0-d3d3-45cc-a693-f3bccc3ecf46)
+# Images <img src="https://user-images.githubusercontent.com/102408138/181803745-a7421993-ec40-4ac6-bc71-9f7cf25dbb4d.gif" width="50" height="50" />
+<img src="https://github.com/user-attachments/assets/7564a7b0-d3d3-45cc-a693-f3bccc3ecf46" width="200" height="400" />
