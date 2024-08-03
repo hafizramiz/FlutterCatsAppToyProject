@@ -24,5 +24,5 @@ tierPoints.
 Shared is responsible for features that are shared between the two features.
 
 # Images <img src="https://user-images.githubusercontent.com/102408138/181803745-a7421993-ec40-4ac6-bc71-9f7cf25dbb4d.gif" width="50" height="50" />
-<img src="https://github.com/user-attachments/assets/7564a7b0-d3d3-45cc-a693-f3bccc3ecf46" width="400" height="400" />
-<img src="https://github.com/user-attachments/assets/3e4ce151-bc9a-4f83-a1fa-6d8067fc67b4" width="400" height="400" />
+![Screenshot_20240803_210318](https://github.com/user-attachments/assets/936a02e3-446d-42a9-a65b-1fbb0b057d51)
+![Screenshot_20240803_210933](https://github.com/user-attachments/assets/3e4ce151-bc9a-4f83-a1fa-6d8067fc67b4)
