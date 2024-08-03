@@ -29,12 +29,19 @@ class HomePage extends StatelessWidget {
         body: SafeArea(
           child: Builder(
             builder: (context) {
-              return SafeArea(
+              return const SafeArea(
                 child: Column(
                   children: [
                     CatsView(),
                     TiersView(),
-                    const SizedBox(height: AppSize.sizedBoxHeight),
+                   SizedBox(
+                     width: 200,
+                     child: Divider(
+                       thickness: 2.0,
+                       color: Colors.black,
+                     ),
+                   )
+                   // const SizedBox(height: AppSize.sizedBoxHeight),
                   ],
                 ),
               );
