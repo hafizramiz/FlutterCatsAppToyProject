@@ -34,14 +34,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     CatsView(),
                     TiersView(),
-                   SizedBox(
-                     width: AppSize.dividerSizedBoxWidth,
-                     child: Divider(
-                       thickness: AppSize.dividerThickness,
-                       color: Colors.black,
-                     ),
-                   )
-                   // const SizedBox(height: AppSize.sizedBoxHeight),
+                    const SizedBox(height: AppSize.sizedBoxHeight),
                   ],
                 ),
               );
