@@ -3,6 +3,9 @@ import 'package:meta/meta.dart';
 typedef OnError<E> = void Function(E error);
 typedef OnSuccess<S> = void Function(S success);
 
+/// Either class BaseResponse class'tir.
+/// Bu class, iki tip veri donduren fonksiyonlar icin kullanilir.
+
 @sealed
 abstract class Either<E, S> {
   const Either();
@@ -15,16 +18,30 @@ abstract class Either<E, S> {
 
   bool isSuccess();
 
+  /// This pattern allows you to define different behaviors based on the current state.
   void when({
     required OnError<E> error,
-    required OnSuccess<S> success,
+    required void Function (S success) successFunction,
   });
 }
 
+
+/// Asagidaki buna benziyor aslinda:
+class BaseResponse<T> {
+  final T? data;
+  final String? error;
+
+  BaseResponse({this.data, this.error});
+}
+
+
+
 @immutable
 class Success<E, S> implements Either<E, S> {
+  /// Constructorda da Success verecegiz.
   const Success(this._success);
 
+  /// Bursa S tipinde bir parametre alacak.
   final S _success;
 
   @override
@@ -39,12 +56,15 @@ class Success<E, S> implements Either<E, S> {
   @override
   S? getSuccess() => _success;
 
+  /// Burda bir metot tanimladim. Eger Success'e duserse burdaki Success fonksiyonu calisacak. Aslinda cagirdigimizda
+  /// yukardaki abstract classi vermis olacagiz. Eger ki success'e duserse successFunction calisacak.
+  /// Yok Error'a duserse error calisacak.
   @override
   void when({
     required OnError<E> error,
-    required OnSuccess<S> success,
+    required void Function (S success) successFunction,
   }) {
-    success(_success);
+    successFunction(_success);
   }
 
   @override
@@ -76,9 +96,11 @@ class Error<E, S> implements Either<E, S> {
   @override
   void when({
     required OnError<E> error,
-    required OnSuccess<S> success,
+    required Function (S success) successFunction,
   }) {
+    /// Burda da error function calisacak. Cunku class error class ve bu sinifin icine dustugu belli olacak.
     error(_error);
+    /// Burda [successFunction] calistirmadik
   }
 
   @override
@@ -89,6 +111,9 @@ class Error<E, S> implements Either<E, S> {
   int get hashCode => _error.hashCode;
 }
 
+
+
+/// Burdaki Unit neden kullaniliyor bilmiyorum
 @immutable
 class Unit {
   const Unit._internal();
@@ -98,3 +123,24 @@ class Unit {
 }
 
 const unit = Unit._internal();
+
+
+
+Future<Either> testEither() {
+  final success = Success<String, int>(1);
+  final error = Error<String, int>('error');
+
+  success.when(
+    error: (error) => print('error: $error'),
+    successFunction: (success) => print('success: $success'),
+  );
+
+  error.when(
+    error: (error) => print('error: $error'),
+    successFunction: (success) => print('success: $success'),
+  );
+
+  /// Burda ben diyorum ki Either donecegim.Either da diyor ki bana
+  /// Bana iki farkli tip vermelisin ki ben onlari almadan olusamam.
+  return
+}

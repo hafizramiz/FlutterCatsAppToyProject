@@ -2,6 +2,8 @@ import 'package:equatable/equatable.dart';
 
 enum ErrorType { noInternet, network, cache, other }
 
+/// Burdaki Failure class'i da Buna verilen E tipinde error tipine gore
+
 class Failure<E> extends Equatable {
   final E? error;
   final ErrorType errorType;
