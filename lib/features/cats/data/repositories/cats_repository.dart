@@ -21,10 +21,16 @@ class CatsRepositoryImpl implements CatsRepository {
         final result = await dataSource.fetchData();
         dataHolder.setData(result);
       }
-      return Success(dataHolder.getCats()!);
+      return Success(dataHolder.getCats()!);  /// Burdaki Success class'ı Either class'tan inherit almis classtir,
+      /// Repository data source'dan beslenir. Data source'ta client ile istek yapmakla yukumludur.
+      /// Burda Data source remote da olabilir. local da olabilir. Remote olursa dio client'i kullanilarak
+      /// data source'dan veri cekilir.
+      /// Eger client ile yapilan istekten donen sonuc basarili ise Success class'ı kullanilir.
     } on DioError catch (e) {
+      /// Eger hataya duserse de Error class dondurulur.
       return Error(Failure.network(e.message));
     } catch (_) {
+      /// Baska hataya duserse Error icinde farkli failure dondurulur.
       return const Error(Failure.other());
     }
   }

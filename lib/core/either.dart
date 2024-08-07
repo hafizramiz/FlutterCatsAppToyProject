@@ -20,7 +20,7 @@ abstract class Either<E, S> {
 
   /// This pattern allows you to define different behaviors based on the current state.
   void when({
-    required OnError<E> error,
+    required void Function (E error) errorFunction,
     required void Function (S success) successFunction,
   });
 }
@@ -53,6 +53,8 @@ class Success<E, S> implements Either<E, S> {
   @override
   E? getError() => null;
 
+  /// getSuccess ile bu class icindeki success tipindeki objeyi get yapabiliyoruz
+
   @override
   S? getSuccess() => _success;
 
@@ -61,7 +63,7 @@ class Success<E, S> implements Either<E, S> {
   /// Yok Error'a duserse error calisacak.
   @override
   void when({
-    required OnError<E> error,
+    required void Function (E error) errorFunction,
     required void Function (S success) successFunction,
   }) {
     successFunction(_success);
@@ -95,11 +97,11 @@ class Error<E, S> implements Either<E, S> {
 
   @override
   void when({
-    required OnError<E> error,
+    required Function (E error) errorFunction,
     required Function (S success) successFunction,
   }) {
     /// Burda da error function calisacak. Cunku class error class ve bu sinifin icine dustugu belli olacak.
-    error(_error);
+    errorFunction(_error);
     /// Burda [successFunction] calistirmadik
   }
 
@@ -126,21 +128,21 @@ const unit = Unit._internal();
 
 
 
-Future<Either> testEither() {
-  final success = Success<String, int>(1);
-  final error = Error<String, int>('error');
-
-  success.when(
-    error: (error) => print('error: $error'),
-    successFunction: (success) => print('success: $success'),
-  );
-
-  error.when(
-    error: (error) => print('error: $error'),
-    successFunction: (success) => print('success: $success'),
-  );
-
-  /// Burda ben diyorum ki Either donecegim.Either da diyor ki bana
-  /// Bana iki farkli tip vermelisin ki ben onlari almadan olusamam.
-  return
-}
+// Future<Either> testEither() {
+//   final success = Success<String, int>(1);
+//   final error = Error<String, int>('error');
+//
+//   success.when(
+//     error: (error) => print('error: $error'),
+//     successFunction: (success) => print('success: $success'),
+//   );
+//
+//   error.when(
+//     error: (error) => print('error: $error'),
+//     successFunction: (success) => print('success: $success'),
+//   );
+//
+//   /// Burda ben diyorum ki Either donecegim.Either da diyor ki bana
+//   /// Bana iki farkli tip vermelisin ki ben onlari almadan olusamam.
+//   return
+// }

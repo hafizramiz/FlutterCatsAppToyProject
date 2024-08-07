@@ -5,7 +5,7 @@ import '../entities/cat.dart';
 import '../repositories/cats_repository.dart';
 
 
-
+/// [FetchCats] use case olusturulur. Bu use case repositoryden beslenir.
 /// Burda cats listesini getirecek Bir use case bulunuyor.
 /// Bu use case CatsRepository'i kullanarak cats listesini getirir.
 class FetchCats extends Usecase<String, List<Cat>, int?> {

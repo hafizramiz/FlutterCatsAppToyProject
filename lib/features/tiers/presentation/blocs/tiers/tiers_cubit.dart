@@ -17,8 +17,8 @@ class TiersCubit extends Cubit<TiersState> {
     print(result);
 
     result.when(
-      error: (failure) => emit(TiersFailure(failure.error)),
-      success: (tiers) {
+      errorFunction: (failure) => emit(TiersFailure(failure.error)),
+      successFunction: (tiers) {
         emit(TiersSuccess(tiers,));
       },
     );
